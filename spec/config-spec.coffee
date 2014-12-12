@@ -132,9 +132,9 @@ describe "Config", ->
       expect(atom.config.isDefault('foo.same')).toBe true
       expect(atom.config.isDefault('foo.changes')).toBe true
 
-      atom.config.set('foo.same', 2)
+      atom.config.set('foo.same', 1)
       atom.config.set('foo.changes', 3)
-      expect(atom.config.isDefault('foo.same')).toBe false
+      expect(atom.config.isDefault('foo.same')).toBe true
       expect(atom.config.isDefault('foo.changes')).toBe false
 
     describe "when scoped settings are used", ->

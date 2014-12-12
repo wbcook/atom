@@ -602,11 +602,9 @@ class Config
   isDefault: (scopeSelector, keyPath) ->
     if arguments.length == 1
       keyPath = scopeSelector
-      scopeSelector = null
+      scopeSelector = '*'
 
-    scopeSelector ?= '*'
-    settings = @scopedSettingsStore.propertiesForSourceAndSelector(@getUserConfigPath(), scopeSelector)
-    not _.valueForKeyPath(settings, keyPath)?
+    not @get(keyPath, {scope: [scopeSelector], sources: [@getUserConfigPath()]})?
 
   # Extended: Retrieve the schema for a specific key path. The schema will tell
   # you what type the keyPath expects, and other metadata about the config
