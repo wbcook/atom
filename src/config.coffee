@@ -806,7 +806,7 @@ class Config
 
   getRawValue: (keyPath, options) ->
     value = @getRawScopedValue(['xxx'], keyPath, options)
-    defaultValue = _.valueForKeyPath(@defaultSettings, keyPath)
+    defaultValue = _.valueForKeyPath(@defaultSettings, keyPath) unless options?.sources?.length > 0
 
     if value?
       value = _.deepClone(value)
